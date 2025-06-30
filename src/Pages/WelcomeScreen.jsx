@@ -16,7 +16,7 @@ const TypewriterEffect = ({ text }) => {
       } else {
         clearInterval(timer);
       }
-    }, 210);
+    }, 240);
     
     return () => clearInterval(timer);
   }, [text]);
@@ -60,7 +60,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
       setTimeout(() => {
         onLoadingComplete?.();
       }, 1000);
-    }, 4000);
+    }, 3000);
     
     return () => clearTimeout(timer);
   }, [onLoadingComplete]);
@@ -135,9 +135,6 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                   </div>
                   <div>
                     <span data-aos="fade-up" data-aos-delay="800" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                      Web
-                    </span>{' '}
-                    <span data-aos="fade-up" data-aos-delay="1000" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                       Portofolio
                     </span>
                   </div>
