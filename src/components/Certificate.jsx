@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   IconButton,
@@ -10,9 +10,31 @@ import CloseIcon from "@mui/icons-material/Close";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 
 const Certificate = ({ Img, Title, Description }) => {
+  const images = Array.isArray(Img) ? Img : [Img];
   const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  useEffect(() => {
+    let timer;
 
-  const handleOpen = () => setOpen(true);
+    if (!open && images.length > 1) {
+      timer = setInterval(() => {
+        setActiveIndex((prev) => {
+          const next = prev + 1;
+          return next >= images.length ? 0 : next;
+        });
+      }, 2000);
+    } else {
+      setActiveIndex(0);
+    }
+
+    return () => clearInterval(timer);
+  }, [open, images.length]);
+
+
+  const handleOpen = () => {
+    setActiveIndex(0);
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   return (
@@ -44,22 +66,65 @@ const Certificate = ({ Img, Title, Description }) => {
           }}
         >
           {/* Image */}
-          <Box sx={{ position: "relative" }}>
-            <img
-              className="license-image"
-              src={Img}
-              alt={Title}
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                objectFit: "contain",
-                filter: "contrast(1.10) brightness(0.9) saturate(1.1)",
-                transition: "filter 0.3s ease",
-              }}
-              onClick={handleOpen}
-            />
+          <Box sx={{ position: "relative", overflow: "hidden", borderRadius: 2 }}>
+          {/* Swipable Image Carousel */}
+          <Box
+            sx={{
+              display: "flex",
+              transition: "transform 0.5s ease-in-out",
+              transform: `translateX(-${activeIndex * (100 / images.length)}%)`,
+              width: `${images.length * 100}%`,
+            }}
+          >
+            {images.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`${Title} ${idx}`}
+                style={{
+                  width: `${100 / images.length}%`,
+                  aspectRatio: "7 / 5",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  filter: "contrast(1.10) brightness(0.9) saturate(1.1)",
+                  transition: "filter 0.3s ease",
+                }}
+                onClick={handleOpen}
+              />
+            ))}
           </Box>
+
+          {/* Dot Pagination */}
+          {images.length > 1 && (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: 1,
+                gap: 1,
+                position: "absolute",
+                bottom: 8,
+                left: 0,
+                right: 0,
+              }}
+            >
+              {images.map((_, idx) => (
+                <Box
+                  key={idx}
+                  sx={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    backgroundColor: idx === activeIndex ? "white" : "grey",
+                    opacity: idx === activeIndex ? 1 : 0.5,
+                    transition: "all 0.3s",
+                  }}
+                />
+              ))}
+            </Box>
+          )}
+        </Box>
+
 
           {/* Hover Overlay */}
           <Box
@@ -172,18 +237,149 @@ const Certificate = ({ Img, Title, Description }) => {
             <CloseIcon sx={{ fontSize: 24 }} />
           </IconButton>
 
-          {/* Full Image */}
-          <img
-            src={Img}
-            alt={Title}
-            style={{
-              display: "block",
-              maxWidth: "100%",
-              maxHeight: "90vh",
-              margin: "0 auto",
-              objectFit: "contain",
-            }}
-          />
+          {/* Full Image with left/right arrow */}
+          <Box 
+          sx={{ position: "relative" }}>
+            {/* Left arrow */}
+            {images.length > 1 && (
+              <IconButton
+                onClick={() => setActiveIndex((prev) => (prev - 1 + images.length) % images.length)}
+                sx={{
+                  position: {
+                    xs: "static", // mobile
+                    sm: "absolute", // desktop
+                  },
+                  display: { xs: "none", sm: "flex" },
+                  left: { sm: -60 },
+                  top: { sm: "50%" },
+                  transform: {
+                    xs: "none",
+                    sm: "translateY(-50%)",
+                  },
+                  color: "white",
+                  zIndex: 2,
+                  mx: { xs: 1 },
+                  "&:hover": {
+                    transform: {
+                      xs: "scale(1.1)",
+                      sm: "translateY(-50%) scale(1.1)",
+                    },
+                  },
+                }}
+              >
+                {"←"}
+              </IconButton>
+
+            )}
+
+            {/* Image */}
+            <img
+              src={images[activeIndex]}
+              alt={Title}
+              style={{
+                display: "block",
+                maxWidth: "100%",
+                maxHeight: "90vh",
+                margin: "0 auto",
+                objectFit: "contain",
+              }}
+            />
+            {images.length > 1 && (
+              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1, gap: 1 }}>
+                {images.map((_, idx) => (
+                  <Box
+                    key={idx}
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      backgroundColor: idx === activeIndex ? 'white' : 'grey',
+                      opacity: idx === activeIndex ? 1 : 0.5,
+                      transition: 'all 0.3s',
+                    }}
+                  />
+                ))}
+              </Box>
+            )}
+
+            {/* Arrows for mobile - centered below image */}
+            {images.length > 1 && (
+              <Box
+                sx={{
+                  display: { xs: "flex", sm: "none" },
+                  justifyContent: "center",
+                  mt: 2,
+                  gap: 2,
+                }}
+              >
+                <IconButton
+                  onClick={() =>
+                    setActiveIndex((prev) => (prev - 1 + images.length) % images.length)
+                  }
+                  sx={{
+                    color: "white",
+                    bgcolor: "rgba(255,255,255,0.1)",
+                    "&:hover": {
+                      bgcolor: "rgba(255,255,255,0.2)",
+                      transform: "scale(1.1)",
+                    },
+                  }}
+                >
+                  {"←"}
+                </IconButton>
+                <IconButton
+                  onClick={() =>
+                    setActiveIndex((prev) => (prev + 1) % images.length)
+                  }
+                  sx={{
+                    color: "white",
+                    bgcolor: "rgba(255,255,255,0.1)",
+                    "&:hover": {
+                      bgcolor: "rgba(255,255,255,0.2)",
+                      transform: "scale(1.1)",
+                    },
+                  }}
+                >
+                  {"→"}
+                </IconButton>
+              </Box>
+            )}
+
+
+
+            {/* Right arrow */}
+            {images.length > 1 && (
+              <IconButton
+                onClick={() => setActiveIndex((prev) => (prev + 1) % images.length)}
+                sx={{
+                  position: {
+                    xs: "static",
+                    sm: "absolute",
+                  },
+                  display: { xs: "none", sm: "flex" },
+                  right: { sm: -60 },
+                  top: { sm: "50%" },
+                  transform: {
+                    xs: "none",
+                    sm: "translateY(-50%)",
+                  },
+                  color: "white",
+                  zIndex: 2,
+                  mx: { xs: 1 },
+                  "&:hover": {
+                    transform: {
+                      xs: "scale(1.1)",
+                      sm: "translateY(-50%) scale(1.1)",
+                    },
+                  },
+                }}
+              >
+                {"→"}
+              </IconButton>
+
+            )}
+          </Box>
+
         </Box>
       </Modal>
     </Box>

@@ -26,27 +26,43 @@ const AboutPage = () => {
   }, []);
 
   const frameworksAndLanguages = [
-    { icon: "codeigniter.svg", name: "CodeIgniter" },
-    { icon: "laravel.svg", name: "Laravel" },
-    { icon: "flutter.svg", name: "Flutter" },
-    { icon: "bootstrap.svg", name: "Bootstrap" },
-    { icon: "html.svg", name: "HTML" },
-    { icon: "css.svg", name: "CSS" },
-    { icon: "javascript.svg", name: "JavaScript" },
-    { icon: "php.svg", name: "PHP" },
-    { icon: "dart.svg", name: "Dart" },
-    { icon: "cpp.svg", name: "C++" },
-    { icon: "mysql.svg", name: "MySQL" },
+    { icon: "techstack/laravel.svg", name: "Laravel" },
+    { icon: "techstack/python.svg", name: "Python" },
+    { icon: "techstack/flutter.svg", name: "Flutter" },
+    { icon: "techstack/reactjs.svg", name: "ReactJS" },
+    { icon: "techstack/django.svg", name: "Django" },
+    { icon: "techstack/tailwind.svg", name: "Tailwind CSS" },
+    { icon: "techstack/nodejs.svg", name: "Node.js" },
+    { icon: "techstack/vuejs.svg", name: "Vue.js" },
+    { icon: "techstack/typescript.svg", name: "TypeScript" },
+    { icon: "techstack/java.svg", name: "Java" },
+    { icon: "techstack/dart.svg", name: "Dart" },
+    { icon: "techstack/mysql.svg", name: "SQL" },
+    { icon: "techstack/cpp.svg", name: "C/C++" },
+    { icon: "techstack/php.svg", name: "PHP" },
+    { icon: "techstack/codeigniter.svg", name: "CodeIgniter" },
+    { icon: "techstack/html.svg", name: "HTML" },
+    { icon: "techstack/css.svg", name: "CSS" },
+    { icon: "techstack/javascript.svg", name: "JavaScript" },
   ];
 
   const tools = [
-    { icon: "vscode.svg", name: "VS Code" },
-    { icon: "figma.svg", name: "Figma" },
-    { icon: "git.svg", name: "Git" },
-    { icon: "github.svg", name: "GitHub" },
-    { icon: "canva.svg", name: "Canva" },
-    { icon: "xampp.svg", name: "XAMPP" },
-    { icon: "colab.svg", name: "Google Colab" },
+    { icon: "techstack/vscode.svg", name: "VS Code" },
+    { icon: "techstack/figma.svg", name: "Figma" },
+    { icon: "techstack/github.svg", name: "GitHub" },
+    { icon: "techstack/excel.svg", name: "Excel" },
+    { icon: "techstack/powerbi.svg", name: "Power BI" },
+    { icon: "techstack/powerautomate.svg", name: "Power Automate" },
+    { icon: "techstack/powerapps.svg", name: "Power Apps" },
+    { icon: "techstack/uipath.svg", name: "UiPath" },
+    { icon: "techstack/firebase.svg", name: "Firebase" },
+    { icon: "techstack/dialogflow.svg", name: "Dialogflow" },
+    { icon: "techstack/laragon.svg", name: "Laragon" },
+    { icon: "techstack/colab.svg", name: "Google Colab" },
+    { icon: "techstack/postman.svg", name: "Postman" },
+    { icon: "techstack/docker.svg", name: "Docker" },
+    { icon: "techstack/wordpress.svg", name: "WordPress" },
+    { icon: "techstack/matlab.svg", name: "MATLAB" }
   ];
 
   return (
@@ -67,7 +83,7 @@ const AboutPage = () => {
         {/* Tech Stack */}
         <div className="mt-12 space-y-8 text-center">
           <h3 className="text-xl sm:text-2xl font-semibold text-slate-200">Frameworks & Languages</h3>
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex flex-wrap justify-center gap-3 justify-items-center">
             {frameworksAndLanguages.map((tech, idx) => (
               <div
                 key={idx}
@@ -78,7 +94,7 @@ const AboutPage = () => {
                   src={`/${tech.icon}`}
                   alt={tech.name}
                   title={tech.name}
-                  className="w-28 h-28 rounded-xl bg-white/5 p-3 border border-white/10 shadow-[0_0_10px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-transform duration-300 group-hover:scale-110"
+                  className="w-12 h-12 sm:w-28 sm:h-28 rounded-xl bg-white/5 p-3 border border-white/10 shadow-[0_0_10px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-transform duration-300 group-hover:scale-110"
                 />
                 <span className="mt-2 text-xs text-slate-300">{tech.name}</span>
               </div>
@@ -86,7 +102,7 @@ const AboutPage = () => {
           </div>
 
           <h3 className="text-xl sm:text-2xl font-semibold text-slate-200 mt-6">Tools</h3>
-          <div className="flex flex-wrap justify-center gap-3 ">
+          <div className="flex flex-wrap justify-center gap-3 justify-items-center">
             {tools.map((tool, idx) => (
               <div
                 key={idx}
@@ -97,7 +113,7 @@ const AboutPage = () => {
                   src={`/${tool.icon}`}
                   alt={tool.name}
                   title={tool.name}
-                  className="w-28 h-28 rounded-xl bg-white/5 p-3 border border-white/10 shadow-[0_0_10px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-transform duration-300 group-hover:scale-110"
+                  className="w-12 h-12 sm:w-28 sm:h-28 rounded-xl bg-white/5 p-3 border border-white/10 shadow-[0_0_10px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-transform duration-300 group-hover:scale-110"
                 />
                 <span className="mt-2 text-xs text-slate-300">{tool.name}</span>
               </div>

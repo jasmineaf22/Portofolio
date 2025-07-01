@@ -77,12 +77,13 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id, TechStack
                 src={Img}
                 alt={Title}
                 style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block',
-                  objectFit: 'contain',
-                  filter: 'contrast(1.10) brightness(0.9) saturate(1.1)',
-                  transition: 'filter 0.3s ease',
+                  width: "100%",
+                  aspectRatio: "7 / 5",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  display: "block",
+                  filter: "contrast(1.10) brightness(0.9) saturate(1.1)",
+                  transition: "filter 0.3s ease",
                 }}
                 onClick={handleOpen}
               />
@@ -216,11 +217,11 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id, TechStack
                   onClick={handleLiveDemo}
                   className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
                 >
-                  <span className="text-sm font-medium">Live Demo</span>
+                  <span className="text-sm font-medium">Link</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
               ) : (
-                <span className="text-gray-500 text-sm">Demo Not Available</span>
+                <span className="text-gray-500 text-sm">Link Not Available</span>
               )}
 
               {id ? (
