@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CardProject from "../components/CardProject";
 import Certificate from "../components/Certificate";
+import CardExperience from "../components/CardExperience";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Briefcase, Award, Code } from "lucide-react";
@@ -114,20 +115,34 @@ export default function FullWidthTabs() {
   // Data local
   const projects = [
     {
-      id: 1,
-      Img: "Photo.png",
-      Title: "Project One",
-      Description: "Description for Project One",
-      Link: "https://example.com/project1",
+      id: "arcode-2024",             // unik
+      Title: "Arcode Top-up Platform",
+      Description: "Web top-up digital dengan fitur loyalty tier, keluhan pelanggan, dan notifikasi email.",
+      Img: "/images/arcode.png",
+      Link: "https://arcode.vercel.app",
+      Github: "Private",             // atau bisa link langsung
+      TechStack: ["Laravel", "Filament", "MySQL", "Tailwind CSS"],
+      Features: [
+        "Top-up otomatis dengan redeem code acak",
+        "Sistem loyalty Bronze - Silver - Gold",
+        "Keluhan pelanggan sebagai tiket chat",
+        "Notifikasi email realtime",
+        "Dashboard admin Laravel Filament"
+      ]
     },
     // tambahkan data lain sesuai kebutuhan
   ];
 
+    useEffect(() => {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, []);
+
   const licenses = [
     {
       id: 1,
-      Img: "Photo.png",
-      Title: "Duolingo English Test",
+      Img: "license/DET.png",
+      Title: "Duolingo English Test (DET) - English Proficiency",
+      Description: "Test of English language proficiency.",
     },
     // tambahkan data lain
   ];
@@ -135,19 +150,25 @@ export default function FullWidthTabs() {
   const experiences = [
     {
       id: 1,
+      image: "experience/XL.png",
       place: "XL Axiata",
       position: "Digitalization - Program Office Intern",
-      description: "Developed dashboard web app, PowerBI dashboards, and automation with Power Automate.",
       time: "July 2024 – Sept 2024",
+      description: `• Developed a dashboard web app to provide project summaries using Laravel
+  • Gained in-depth understanding of end-to-end project milestones in the telecommunications sector
+  • Created PowerBI dashboards
+  • Designed and implemented various automation systems using Microsoft Power Automate and Power Apps`,
     },
     {
       id: 2,
+      image: "/assets/images/ai_lab.jpg",
       place: "Informatics Laboratory Assistant",
       position: "Artificial Intelligence Lab Assistant",
-      description: "Guided students in AI concepts and practical implementation.",
       time: "Feb 2025 – July 2025",
+      description: `• Guided students in understanding and implementing AI concepts
+  • Supervised practical lab sessions and ensured smooth module delivery
+  • Assisted in grading and feedback for AI projects`,
     },
-    // tambahkan data lain
   ];
 
   const handleChange = (event, newValue) => {
@@ -267,30 +288,37 @@ export default function FullWidthTabs() {
               {displayedExperiences.map((exp, index) => (
                 <div
                   key={exp.id || index}
-                  className="p-4 rounded-md bg-white/5 border border-white/10 hover:border-white/20 transition-all"
                   data-aos={index % 2 === 0 ? "fade-up-right" : "fade-up-left"}
                   data-aos-duration="1000"
                 >
-                  <h3 className="text-lg font-semibold text-white">{exp.position}</h3>
-                  <p className="text-sm text-slate-400">{exp.place} • {exp.time}</p>
-                  <p className="mt-2 text-slate-300 text-sm">{exp.description}</p>
+                  <CardExperience
+                    image={exp.image}
+                    position={exp.position}
+                    place={exp.place}
+                    time={exp.time}
+                    description={exp.description}
+                  />
                 </div>
               ))}
             </div>
             {experiences.length > initialItems && (
               <div className="mt-6 w-full flex justify-start">
-                <ToggleButton onClick={() => toggleShowMore('experiences')} isShowingMore={showAllExperiences} />
+                <ToggleButton onClick={() => toggleShowMore("experiences")} isShowingMore={showAllExperiences} />
               </div>
             )}
           </TabPanel>
+
 
           {/* License Tab */}
           <TabPanel value={value} index={1} dir={theme.direction}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
               {displayedLicenses.map((license, index) => (
                 <div key={license.id || index} data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"} data-aos-duration="1000">
-                  <Certificate ImgSertif={license.Img} />
-                  <p className="mt-2 text-center text-slate-300 text-sm">{license.Title}</p>
+                  <Certificate
+                      Img={license.Img}
+                      Title={license.Title}
+                      Description={license.Description}
+                    />
                 </div>
               ))}
             </div>
@@ -306,7 +334,7 @@ export default function FullWidthTabs() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-hidden">
               {displayedProjects.map((project, index) => (
                 <div key={project.id || index} data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"} data-aos-duration="1000">
-                  <CardProject Img={project.Img} Title={project.Title} Description={project.Description} Link={project.Link} id={project.id} />
+                  <CardProject Img={project.Img} Title={project.Title} Description={project.Description} Link={project.Link} id={project.id} TechStack={project.TechStack} />
                 </div>
               ))}
             </div>

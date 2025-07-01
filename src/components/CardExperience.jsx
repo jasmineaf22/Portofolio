@@ -9,7 +9,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 
-const Certificate = ({ Img, Title, Description }) => {
+const CardExperience = ({ image, position, place, time, description }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -19,7 +19,7 @@ const Certificate = ({ Img, Title, Description }) => {
     <Box className="group relative w-full">
       {/* Card Container */}
       <Box className="rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all p-4 overflow-hidden shadow-md">
-        {/* Image Hover Area */}
+        {/* Clickable Image Container with Hover */}
         <Box
           sx={{
             position: "relative",
@@ -37,7 +37,7 @@ const Certificate = ({ Img, Title, Description }) => {
                 transform: "translate(-50%, -50%)",
                 opacity: 1,
               },
-              "& .license-image": {
+              "& .experience-image": {
                 filter: "contrast(1.05) brightness(0.2) saturate(1.1)",
               },
             },
@@ -46,9 +46,9 @@ const Certificate = ({ Img, Title, Description }) => {
           {/* Image */}
           <Box sx={{ position: "relative" }}>
             <img
-              className="license-image"
-              src={Img}
-              alt={Title}
+              className="experience-image"
+              src={image}
+              alt="Experience"
               style={{
                 width: "100%",
                 height: "auto",
@@ -105,7 +105,7 @@ const Certificate = ({ Img, Title, Description }) => {
                   textShadow: "0 2px 4px rgba(0,0,0,0.3)",
                 }}
               >
-                View License
+                View Experience
               </Typography>
             </Box>
           </Box>
@@ -114,14 +114,16 @@ const Certificate = ({ Img, Title, Description }) => {
         {/* Text Content */}
         <Box className="mt-3">
           <Typography variant="h6" className="text-white text-lg font-semibold">
-            {Title}
+            {position}
           </Typography>
-
-          {Description && (
-            <Typography className="text-sm text-slate-300 mt-1 whitespace-pre-wrap">
-              {Description}
-            </Typography>
-          )}
+          <Typography className="text-sm text-slate-400">
+            {place} • {time}
+          </Typography>
+          <ul className="mt-2 text-slate-300 text-sm list-disc list-inside whitespace-pre-wrap space-y-1">
+            {description
+              .split("\n")
+              .map((line, idx) => <li key={idx}>{line.replace(/^•\s*/, "")}</li>)}
+          </ul>
         </Box>
       </Box>
 
@@ -174,8 +176,8 @@ const Certificate = ({ Img, Title, Description }) => {
 
           {/* Full Image */}
           <img
-            src={Img}
-            alt={Title}
+            src={image}
+            alt="Zoomed"
             style={{
               display: "block",
               maxWidth: "100%",
@@ -190,4 +192,4 @@ const Certificate = ({ Img, Title, Description }) => {
   );
 };
 
-export default Certificate;
+export default CardExperience;
