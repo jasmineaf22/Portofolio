@@ -91,7 +91,7 @@ const handleGithubClick = (githubLink) => {
       text: 'Sorry, the source for this project is private and cannot be accessed.',
       confirmButtonText: 'Understood',
       confirmButtonColor: '#3085d6',
-      background: '#030014',
+      background: '#38010a',
       color: '#ffffff'
     });
     return false;

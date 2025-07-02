@@ -23,15 +23,15 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id, TechStack
 
   const handleLiveDemo = (e) => {
     if (!ProjectLink) {
-      console.log("ProjectLink kosong");
+      console.log("Empty Link");
       e.preventDefault();
-      alert("Live demo link is not available");
+      alert("Source is not available");
     }
   };
 
   const handleDetails = (e) => {
     if (!id) {
-      console.log("ID kosong");
+      console.log("Empty ID");
       e.preventDefault();
       alert("Project details are not available");
     }

@@ -318,6 +318,9 @@ const Certificate = ({ Img, Title, Description }) => {
                   }
                   sx={{
                     color: "white",
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
                     bgcolor: "rgba(255,255,255,0.1)",
                     "&:hover": {
                       bgcolor: "rgba(255,255,255,0.2)",
@@ -333,6 +336,9 @@ const Certificate = ({ Img, Title, Description }) => {
                   }
                   sx={{
                     color: "white",
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
                     bgcolor: "rgba(255,255,255,0.1)",
                     "&:hover": {
                       bgcolor: "rgba(255,255,255,0.2)",

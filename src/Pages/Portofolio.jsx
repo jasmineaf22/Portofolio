@@ -516,9 +516,10 @@ Headed a division for a charity event`}
               },
             }}
           >
-            <Tab icon={<Briefcase className="mb-2 w-5 h-5 transition-all duration-300" />} label="Experience" {...a11yProps(0)} />
-            <Tab icon={<Award className="mb-2 w-5 h-5 transition-all duration-300" />} label="License" {...a11yProps(1)} />
-            <Tab icon={<Code className="mb-2 w-5 h-5 transition-all duration-300" />} label="Project" {...a11yProps(2)} />
+          <Tab icon={<Briefcase className="mb-2 w-5 h-5 transition-all duration-300" />} label="Experience" {...a11yProps(0)} />
+          <Tab icon={<Code className="mb-2 w-5 h-5 transition-all duration-300" />} label="Project" {...a11yProps(1)} />
+          <Tab icon={<Award className="mb-2 w-5 h-5 transition-all duration-300" />} label="License" {...a11yProps(2)} />
+
           </Tabs>
         </AppBar>
 
@@ -549,9 +550,24 @@ Headed a division for a charity event`}
             )}
           </TabPanel>
 
+          {/* Project Tab */}
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-hidden">
+              {displayedProjects.map((project, index) => (
+                <div key={project.id || index} data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"} data-aos-duration="1000">
+                  <CardProject Img={project.Img} Title={project.Title} Description={project.Description} Link={project.Link} id={project.id} TechStack={project.TechStack} />
+                </div>
+              ))}
+            </div>
+            {projects.length > initialItems && (
+              <div className="mt-6 w-full flex justify-start">
+                <ToggleButton onClick={() => toggleShowMore('projects')} isShowingMore={showAllProjects} />
+              </div>
+            )}
+          </TabPanel>
 
           {/* License Tab */}
-          <TabPanel value={value} index={1} dir={theme.direction}>
+          <TabPanel value={value} index={2} dir={theme.direction}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
               {displayedLicenses.map((license, index) => (
                 <div key={license.id || index} data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"} data-aos-duration="1000">
@@ -566,22 +582,6 @@ Headed a division for a charity event`}
             {licenses.length > initialItems && (
               <div className="mt-6 w-full flex justify-start">
                 <ToggleButton onClick={() => toggleShowMore('licenses')} isShowingMore={showAllLicenses} />
-              </div>
-            )}
-          </TabPanel>
-
-          {/* Project Tab */}
-          <TabPanel value={value} index={2} dir={theme.direction}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-hidden">
-              {displayedProjects.map((project, index) => (
-                <div key={project.id || index} data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"} data-aos-duration="1000">
-                  <CardProject Img={project.Img} Title={project.Title} Description={project.Description} Link={project.Link} id={project.id} TechStack={project.TechStack} />
-                </div>
-              ))}
-            </div>
-            {projects.length > initialItems && (
-              <div className="mt-6 w-full flex justify-start">
-                <ToggleButton onClick={() => toggleShowMore('projects')} isShowingMore={showAllProjects} />
               </div>
             )}
           </TabPanel>
