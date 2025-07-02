@@ -74,9 +74,9 @@ const SocialLink = memo(({ icon: Icon, link }) => (
 ));
 
 // Constants
-const TYPING_SPEED = 100;
-const ERASING_SPEED = 50;
-const PAUSE_DURATION = 2000;
+const TYPING_SPEED = 50;
+const ERASING_SPEED = 35;
+const PAUSE_DURATION = 1000;
 const WORDS = ["Automation Engineer", "Data Enthusiast", "Software Developer"];
 const TECH_STACK = ["Power Platform", "Laravel", "Python", "SQL", "Flutter"];
 const SOCIAL_LINKS = [
@@ -196,7 +196,7 @@ const Home = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2 w-full justify-start items-start sm:items-center" data-aos="fade-up" data-aos-delay="1400">
-                  <CTAButton href="https://drive.google.com/file/d/13Bpd-PQ50EQakngbpuyrGrDAOKoxH8H0/view?usp=sharing" text="Download CV" icon={ExternalLink} />
+                  <CTAButton href="https://drive.google.com/file/d/1s0U6UMzjG6pmREyPwpS5PsjB4hM9ggMN/view?usp=sharing" text="Download CV" icon={ExternalLink} />
                   <div className="flex flex-row flex-wrap gap-2">
                     {SOCIAL_LINKS.map((social, index) => (
                       <SocialLink key={index} {...social} />

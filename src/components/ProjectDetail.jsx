@@ -5,6 +5,11 @@ import {
   ChevronRight, Layers, Layout, Globe, Package, Cpu, Code,
 } from "lucide-react";
 import Swal from 'sweetalert2';
+import { Modal, IconButton, Box, Backdrop, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+
+
 
 const TECH_ICONS = {
   React: Globe,
@@ -99,6 +104,10 @@ const ProjectDetails = () => {
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [openZoom, setOpenZoom] = useState(false);
+  const handleOpenZoom = () => setOpenZoom(true);
+  const handleCloseZoom = () => setOpenZoom(false);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -225,17 +234,84 @@ const ProjectDetails = () => {
             </div>
 
             <div className="space-y-6 md:space-y-10 animate-slideInRight">
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
-              
-                <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <img
-                  src={project.Img}
-                  alt={project.Title}
-                  className="w-full  object-cover transform transition-transform duration-700 will-change-transform group-hover:scale-105"
-                  onLoad={() => setIsImageLoaded(true)}
-                />
-                <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 transition-colors duration-300 rounded-2xl" />
-              </div>
+<div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group cursor-pointer">
+  <img
+    src={project.Img}
+    alt={project.Title}
+    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter brightness-90 group-hover:brightness-75"
+    onClick={handleOpenZoom}
+  />
+
+  {/* Hover overlay pakai Tailwind semua */}
+  <div
+    onClick={handleOpenZoom}
+    className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center space-y-2"
+  >
+    <FullscreenIcon className="text-white w-10 h-10 drop-shadow-md" />
+    <p className="text-white font-medium text-sm md:text-base drop-shadow-md">View Project</p>
+  </div>
+
+  {/* Modal tetap pakai MUI */}
+  <Modal
+    open={openZoom}
+    onClose={handleCloseZoom}
+    disableEnforceFocus
+    BackdropComponent={Backdrop}
+    BackdropProps={{
+      timeout: 300,
+      sx: {
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        backdropFilter: 'blur(5px)',
+      },
+    }}
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    <Box
+      sx={{
+        position: 'relative',
+        width: 'auto',
+        maxWidth: '90vw',
+        maxHeight: '90vh',
+        outline: 'none',
+      }}
+    >
+      <IconButton
+        onClick={handleCloseZoom}
+        sx={{
+          position: 'absolute',
+          right: 16,
+          top: 16,
+          color: 'white',
+          bgcolor: 'rgba(0,0,0,0.6)',
+          zIndex: 1,
+          padding: 1,
+          '&:hover': {
+            bgcolor: 'rgba(0,0,0,0.8)',
+            transform: 'scale(1.1)',
+          },
+        }}
+      >
+        <CloseIcon sx={{ fontSize: 24 }} />
+      </IconButton>
+
+      <img
+        src={project.Img}
+        alt="Zoomed Project"
+        style={{
+          display: 'block',
+          maxWidth: '100%',
+          maxHeight: '90vh',
+          margin: '0 auto',
+          objectFit: 'contain',
+        }}
+      />
+    </Box>
+  </Modal>
+</div>
 
               {/* Fitur Utama */}
               <div className="bg-white/[0.02] backdrop-blur-xl rounded-2xl p-8 border border-white/10 space-y-6 hover:border-white/20 transition-colors duration-300 group">
