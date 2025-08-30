@@ -163,6 +163,35 @@ export default function FullWidthTabs() {
       ]
     },
     {
+      id: "skillgap",             // unik
+      Title: "Indonesia Digital Skill Gap Analysis",
+      Description: "A data mining project for the GEMASTIK competition to identify the gap between industry demand and workforce supply for digital skills in Indonesia.",
+      Img: "/project/skillgap.png",
+      // Link: ,
+      Github: "Private",
+      TechStack: ["Python, PowerBI"],
+      Features: [
+        "Analyzed thousands of job postings and professional profiles scraped from multiple online platforms.",
+        "Engineered a hybrid NLP pipeline using dictionary-based methods and Transformer models for skill extraction.",
+        "Quantified the skill gap, revealing key opportunities in high-demand, low-supply areas.",
+        "Built an interactive Power BI dashboard to visualize real-time talent market trends."
+      ]
+    },
+    {
+      id: "victoria",             // unik
+      Title: "Room Booking Apps for Bank Victoria",
+      Description: "A secure internal web application for managing meeting room reservations.",
+      Img: "/project/victoria.png",
+      Link: "https://github.com/jasmineaf22/room-book-victoria",
+      Github: "Private",
+      TechStack: ["React JS"],
+      Features: [
+          "Role-based authentication connected to Bank Victoria’s database server",
+          "Room reservation system with scheduling and availability tracking real-time",
+          "Admin dashboard for managing rooms, schedules, and user permissions"
+      ]
+    },
+    {
       id: "cipherlens",             // unik
       Title: "CipherLens",
       Description: "Social App with AR integrated Camera Filters, Chat Rooms, and Interactive Timeline",
@@ -321,12 +350,12 @@ export default function FullWidthTabs() {
       Title: "Associate Data Scientist with Python - DataCamp",
       Description: "Completed DataCamp's Data Scientist with Python track, covering data manipulation, visualization, and machine learning.",
     },
-    {
-      id: 3,
-      Img: "license/UiPath.png",
-      Title: "UiPath RPA Developer Certification",
-      Description: "Achieved UiPath RPA Developer Certification, demonstrating skills in robotic process automation and workflow design.",
-    },
+    // {
+    //   id: 3,
+    //   Img: "license/UiPath.png",
+    //   Title: "UiPath RPA Developer Certification",
+    //   Description: "Achieved UiPath RPA Developer Certification, demonstrating skills in robotic process automation and workflow design.",
+    // },
     {
       id: 4,
       Img: ["license/web1.png", "license/web2.png", "license/web3.png", "license/web4.png"],
@@ -367,8 +396,17 @@ export default function FullWidthTabs() {
   ];
 
   const experiences = [
-    {
+        {
       id: 1,
+      image: "experience/Victoria.png",
+      place: "Bank Victoria International",
+      position: "Digital Banking Intern",
+      time: "July 2025 – August 2025",
+      description: `Built automation workflows for core banking processes using Microsoft Power Automate
+Developed a React-based front-end web integrated with internal APIs`,
+    },
+    {
+      id: 2,
       image: "experience/XL.png",
       place: "XL Axiata",
       position: "Digitalization - Program Office Intern",
@@ -379,8 +417,8 @@ Created PowerBI dashboards
 Designed and implemented various automation systems using Microsoft Power Automate and Power Apps`,
     },
     {
-      id: 2,
-      image: "experience/asprak.jpg",
+      id: 3,
+      image: ["experience/asprak1.png", "experience/asprak2.png", "experience/asprak3.png"],
       place: "Informatics Laboratory Assistant",
       position: "Artificial Intelligence Lab Assistant",
       time: "Feb 2025 – July 2025",
@@ -388,7 +426,7 @@ Designed and implemented various automation systems using Microsoft Power Automa
 Assisted in designing lab exercises, evaluating student assignments, and providing technical support during AI practicums.`,
     },
     {
-      id: 3,
+      id: 4,
       image: "experience/hmif.png",
       place: "Himpunan Mahasiswa Informatika (HMIF) Unsoed",
       position: "Treasury Staff - Entrepreneurship Division",
@@ -396,7 +434,7 @@ Assisted in designing lab exercises, evaluating student assignments, and providi
       description: `Responsible for organizing a seminar and Monitoring the division’s finances
 Involved in various events, both as a staff member and as a coordinator`},
     {
-      id: 4,
+      id: 5,
       image: "experience/kkn.png",
       place: "International Community Service Unsoed 2025 at Kuala Lumpur, Malaysia",
       position: "PIC of Public Relations & Teaching Volunteer",
@@ -404,7 +442,7 @@ Involved in various events, both as a staff member and as a coordinator`},
       description: `Taught early childhood and elementary school students literacy and basic subjects at KBRI Malaysia Learning Center for 30 days
 Managed sponsorship and public relations initiatives to support the program’s operational needs`},
     {
-      id: 5,
+      id: 6,
       place: "Jakarta Merdeka Community at Unsoed",
       position: "Staff of Publications and Public Relations",
       time: "Sept 2022 - Nov 2023",

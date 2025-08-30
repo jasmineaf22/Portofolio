@@ -13,7 +13,7 @@ const ProfileImage = memo(() => (
       <div className="relative">
         <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-[0_0_40px_rgba(120,119,198,0.3)] transform transition-all duration-700 group-hover:scale-105">
           <div className="absolute inset-0 border-4 border-white/20 rounded-full z-20 transition-all duration-700 group-hover:border-white/40 group-hover:scale-105" />
-          <img src="/Photo.jpg" alt="Profile" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2" loading="lazy" />
+          <img src="/Photo-2.jpg" alt="Profile" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2" loading="lazy" />
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@ const AboutPage = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">Get to Know Me</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-400 leading-relaxed text-justify pb-4 sm:pb-0" data-aos="fade-right">
-              An Informatics student specializing in Laravel, Flutter, Power Platform, and data analytics. Experienced in building web dashboards, mobile apps, and automation tools to transform complex ideas into user‑friendly digital products.
+              An Informatics student specializing in software, RPA, and data analytics. Experienced in building web dashboards, mobile apps, and automation flows to transform complex ideas into user‑friendly digital products.
             </p>
           </div>
           <ProfileImage />
