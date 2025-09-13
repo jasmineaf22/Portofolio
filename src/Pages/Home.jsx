@@ -196,7 +196,7 @@ const Home = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2 w-full justify-start items-start sm:items-center" data-aos="fade-up" data-aos-delay="1400">
-                  <CTAButton href="https://drive.google.com/file/d/1s0U6UMzjG6pmREyPwpS5PsjB4hM9ggMN/view?usp=sharing" text="Download CV" icon={ExternalLink} />
+                  <CTAButton href="https://drive.google.com/file/d/1qHrGhYT4p-B5ruabe4itvQ95aseY7JuU/view?usp=sharing" text="Download CV" icon={ExternalLink} />
                   <div className="flex flex-row flex-wrap gap-2">
                     {SOCIAL_LINKS.map((social, index) => (
                       <SocialLink key={index} {...social} />

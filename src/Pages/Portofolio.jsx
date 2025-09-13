@@ -252,11 +252,11 @@ export default function FullWidthTabs() {
     {
       id: "sigizy",             // unik
       Title: "SIGIZY",
-      Description: "Fuzzy-Based Web Application for Early Detection of Child Stunting at Posyandu",
+      Description: "MockUp Design for Fuzzy-Based Web Application for Early Detection of Child Stunting at Posyandu",
       Img: "/project/sigizy.png",
       // Link: "https://arcode.vercel.app",
       Github: "Private",             // atau bisa link langsung
-      TechStack: ["Laravel", "Tailwind CSS", "Vue.js", "MATLAB", "MySQL"],
+      TechStack: ["Figma"],
       Features: [
         "Child Health Data Input (Age, Weight, Height) with Fuzzy Logic Classification",
         "Automatic Stunting Risk Categorization Based on Fuzzy Inference System",
@@ -396,9 +396,21 @@ export default function FullWidthTabs() {
   ];
 
   const experiences = [
-        {
+      {
       id: 1,
-      image: "experience/Victoria.png",
+      // image: "experience/exim.png",
+      place: "Indonesia Eximbank",
+      position: "IT System Development Intern",
+      time: "Sept 2025 – Feb 2026",
+      description: `Assisted in developing and maintaining internal web applications to support business operations.
+Prepared Functional and Technical Documents for system development projects.
+Collaborated with cross-functional teams to gather requirements and translate them into system design documentation.
+Supported system testing, including UAT, and QA processes to ensure compliance with organizational standards.
+Gained practical understanding of system development processes and business workflows in the banking sector.`,
+    },
+    {
+      id: 2,
+      image: "experience/victoria.png",
       place: "Bank Victoria International",
       position: "Digital Banking Intern",
       time: "July 2025 – August 2025",
@@ -406,18 +418,17 @@ export default function FullWidthTabs() {
 Developed a React-based front-end web integrated with internal APIs`,
     },
     {
-      id: 2,
+      id: 3,
       image: "experience/XL.png",
       place: "XL Axiata",
       position: "Digitalization - Program Office Intern",
       time: "July 2024 – Sept 2024",
       description: `Developed a dashboard web app to provide project summaries using Laravel
 Gained in-depth understanding of end-to-end project milestones in the telecommunications sector
-Created PowerBI dashboards
-Designed and implemented various automation systems using Microsoft Power Automate and Power Apps`,
+Implemented various automation systems using Microsoft Power Automate and Power Apps, also built several PowerBI dashboard`,
     },
     {
-      id: 3,
+      id: 4,
       image: ["experience/asprak1.png", "experience/asprak2.png", "experience/asprak3.png"],
       place: "Informatics Laboratory Assistant",
       position: "Artificial Intelligence Lab Assistant",
@@ -426,7 +437,7 @@ Designed and implemented various automation systems using Microsoft Power Automa
 Assisted in designing lab exercises, evaluating student assignments, and providing technical support during AI practicums.`,
     },
     {
-      id: 4,
+      id: 5,
       image: "experience/hmif.png",
       place: "Himpunan Mahasiswa Informatika (HMIF) Unsoed",
       position: "Treasury Staff - Entrepreneurship Division",
@@ -434,7 +445,7 @@ Assisted in designing lab exercises, evaluating student assignments, and providi
       description: `Responsible for organizing a seminar and Monitoring the division’s finances
 Involved in various events, both as a staff member and as a coordinator`},
     {
-      id: 5,
+      id: 6,
       image: "experience/kkn.png",
       place: "International Community Service Unsoed 2025 at Kuala Lumpur, Malaysia",
       position: "PIC of Public Relations & Teaching Volunteer",
@@ -442,7 +453,7 @@ Involved in various events, both as a staff member and as a coordinator`},
       description: `Taught early childhood and elementary school students literacy and basic subjects at KBRI Malaysia Learning Center for 30 days
 Managed sponsorship and public relations initiatives to support the program’s operational needs`},
     {
-      id: 6,
+      id: 7,
       place: "Jakarta Merdeka Community at Unsoed",
       position: "Staff of Publications and Public Relations",
       time: "Sept 2022 - Nov 2023",
